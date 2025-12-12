@@ -13,4 +13,12 @@ public class Inquilino extends Usuario {
 
     public Inquilino() {
     }
+
+    public Piso getPiso() {
+        return piso;
+    }
+
+    public void setPiso(Piso piso) {
+        this.piso = piso;
+    }
 }
