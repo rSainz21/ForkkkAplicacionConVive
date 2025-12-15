@@ -11,6 +11,7 @@ public class Piso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Embedded
+    @Column(nullable = false)
     private Direccion direccion;
     @Column(nullable = false)
     private String descripcion;
