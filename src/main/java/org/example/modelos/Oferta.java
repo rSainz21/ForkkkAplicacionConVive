@@ -20,6 +20,7 @@ public class Oferta {
     @OneToMany(mappedBy = "oferta",  cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Solicitud> solicitudes;
 
+
     public Oferta() {
     }
 

@@ -11,6 +11,9 @@ public class Propietario extends Usuario{
     private List<Piso> pisos;
     @ManyToMany(mappedBy = "propietarios")
     private List<Inquilino> inquilinos;     //Esta lista es la lista que recoge los inquilinos con los que habla el propietario
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "propietario_id")
+    private List<Oferta> ofertas;
 
     public Propietario() {
 
