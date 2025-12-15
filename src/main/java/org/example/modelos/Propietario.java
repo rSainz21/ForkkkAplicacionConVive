@@ -1,9 +1,6 @@
 package org.example.modelos;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -12,9 +9,19 @@ import java.util.List;
 public class Propietario extends Usuario{
     @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL)
     private List<Piso> pisos;
+    @ManyToMany(mappedBy = "propietarios")
+    private List<Inquilino> inquilinos;     //Esta lista es la lista que recoge los inquilinos con los que habla el propietario
 
     public Propietario() {
 
+    }
+
+    public List<Inquilino> getInquilinos() {
+        return inquilinos;
+    }
+
+    public void setInquilinos(List<Inquilino> inquilinos) {
+        this.inquilinos = inquilinos;
     }
 
     public List<Piso> getPisos() {

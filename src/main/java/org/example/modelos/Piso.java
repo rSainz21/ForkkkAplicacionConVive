@@ -16,10 +16,14 @@ public class Piso {
     @Column(nullable = false)
     private String descripcion;
     private String urlImagen;
-    @OneToMany(mappedBy = "piso", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "piso")
     List<Inquilino> inquilinos;
     @ManyToOne
     Propietario propietario;
+    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Oferta> ofertas;
+    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Gasto> gastos;
 
     public Piso() {
     }
@@ -70,5 +74,21 @@ public class Piso {
 
     public void setPropietario(Propietario propietario) {
         this.propietario = propietario;
+    }
+
+    public List<Oferta> getOfertas() {
+        return ofertas;
+    }
+
+    public void setOfertas(List<Oferta> ofertas) {
+        this.ofertas = ofertas;
+    }
+
+    public List<Gasto> getGastos() {
+        return gastos;
+    }
+
+    public void setGastos(List<Gasto> gastos) {
+        this.gastos = gastos;
     }
 }
