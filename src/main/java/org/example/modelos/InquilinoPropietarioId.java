@@ -3,8 +3,8 @@ package org.example.modelos;
 import java.util.Objects;
 
 public class InquilinoPropietarioId {
-    private int inquilinoId;
-    private int propietarioId;
+    private int inquilino;
+    private int propietario;
 
     public InquilinoPropietarioId() {
     }
