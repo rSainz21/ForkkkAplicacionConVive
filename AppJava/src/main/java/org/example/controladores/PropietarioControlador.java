@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/propietarios")
+@RequestMapping("/api")
 public class PropietarioControlador {
     @Autowired
     private PropietarioServicio propietarioServicio;
