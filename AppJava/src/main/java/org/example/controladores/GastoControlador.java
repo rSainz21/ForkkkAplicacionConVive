@@ -29,7 +29,7 @@ public class GastoControlador {
 
     @GetMapping("gastos/{id}")
     public ResponseEntity<?> obtenerGastoPorId(@PathVariable Integer id) {
-        Gasto gasto = gastoServicio.obtenerGastoPorId(id);
+        GastoDTO gasto = gastoServicio.obtenerGastoPorId(id);
         if (gasto == null) {
             return ResponseEntity.notFound().build();
         }

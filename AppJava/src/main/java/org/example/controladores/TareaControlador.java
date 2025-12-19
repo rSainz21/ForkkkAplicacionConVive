@@ -1,5 +1,6 @@
 package org.example.controladores;
 
+import org.example.DTO.TareaDTO;
 import org.example.modelos.Gasto;
 import org.example.modelos.Tarea;
 import org.example.servicios.TareaServicioImpl;
@@ -18,16 +19,16 @@ public class TareaControlador {
 
     @GetMapping("/tareas")
     public ResponseEntity<?> obtenerGastos(){
-        List<Tarea> gastos = tareaServicio.obtenerTareas();
-        if(gastos.isEmpty()){
+        List<TareaDTO> tarea = tareaServicio.obtenerTareas();
+        if(tarea.isEmpty()){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(gastos);
+        return ResponseEntity.ok(tarea);
     }
 
     @GetMapping("tareas/{id}")
     public ResponseEntity<?> obtenerGastoPorId(@PathVariable Integer id) {
-        Tarea tarea = tareaServicio.obtenerTareaPorId(id);
+        TareaDTO tarea = tareaServicio.obtenerTareaPorId(id);
         if (tarea == null) {
             return ResponseEntity.notFound().build();
         }
