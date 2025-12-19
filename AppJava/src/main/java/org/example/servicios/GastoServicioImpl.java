@@ -24,8 +24,15 @@ public class GastoServicioImpl implements GastoServicio {
     }
 
     @Override
-    public Gasto obtenerGastoPorId(Integer id) {
-        return gastoRespositorio.findById(id).orElse(null);
+    public GastoDTO obtenerGastoPorId(Integer id) {
+        return gastoRespositorio.findById(id)
+                .map(g -> new GastoDTO(
+                        g.getId(),
+                        g.getConcepto(),
+                        g.getValor(),
+                        g.getInquilino().getId(),
+                        g.getPiso().getId()
+                )).orElse(null);
     }
 
     @Override

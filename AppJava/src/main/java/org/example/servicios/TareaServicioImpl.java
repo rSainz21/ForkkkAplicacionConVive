@@ -1,5 +1,6 @@
 package org.example.servicios;
 
+import org.example.DTO.TareaDTO;
 import org.example.modelos.Tarea;
 import org.example.repositorios.TareaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,23 @@ public class TareaServicioImpl implements  TareaServicio {
     @Autowired
     private TareaRepositorio tareaRepositorio;
     @Override
-    public List<Tarea> obtenerTareas() {
-        return tareaRepositorio.findAll();
+    public List<TareaDTO> obtenerTareas() {
+        return tareaRepositorio.findAll().stream()
+                .map(t -> new TareaDTO(
+                        t.getId(),
+                        t.getDescripcion(),
+                        t.getInquilino().getId()
+                )).toList();
     }
 
     @Override
-    public Tarea obtenerTareaPorId(Integer id) {
-        return tareaRepositorio.findById(id).orElse(null);
+    public TareaDTO obtenerTareaPorId(Integer id) {
+        return tareaRepositorio.findById(id)
+                .map(t -> new TareaDTO(
+                        t.getId(),
+                        t.getDescripcion(),
+                        t.getInquilino().getId()
+                )).orElse(null);
     }
 
     @Override
