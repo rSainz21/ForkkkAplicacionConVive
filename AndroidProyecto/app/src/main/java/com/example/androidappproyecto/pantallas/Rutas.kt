@@ -1,4 +1,4 @@
-package com.example.androidappproyecto.navegacion
+package com.example.androidappproyecto.pantallas
 
 enum class Rutas {
     Home,
