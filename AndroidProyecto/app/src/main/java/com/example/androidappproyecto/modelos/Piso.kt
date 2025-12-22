@@ -7,3 +7,4 @@ data class Piso(
     val propietario : String,
     val urlImagen : String,
 )
+
