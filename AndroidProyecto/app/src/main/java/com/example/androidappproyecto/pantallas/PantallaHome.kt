@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
@@ -39,6 +40,7 @@ import com.example.androidappproyecto.data.pisos
 import com.example.androidappproyecto.modelos.Piso
 import java.time.LocalDate
 
+@Preview(showBackground = true)
 @Composable
 fun PantallaHome(){
     LazyColumn (
@@ -74,7 +76,7 @@ fun PisoSeccion(piso : Piso){
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.Black)
+                .background(Color(0xFF800000))
                 .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
