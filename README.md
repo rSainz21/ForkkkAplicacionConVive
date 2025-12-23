@@ -27,7 +27,7 @@ Convive es un proyecto desarrollado como parte de un trabajo académico, orienta
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/usuario/convive.git
+   git clone https://github.com/migueel-q/AlicacionProyecto
    ```
 2. Configura la base de datos.
 3. Ejecuta la aplicación desde tu entorno de desarrollo o mediante el comando correspondiente.
