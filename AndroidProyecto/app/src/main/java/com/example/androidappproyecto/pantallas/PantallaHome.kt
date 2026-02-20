@@ -28,9 +28,8 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import com.example.androidappproyecto.R
-import com.example.androidappproyecto.data.pisos
-import com.example.androidappproyecto.modelos.Piso
-import com.example.androidappproyecto.modelos.Propietario
+import com.example.androidappproyecto.data.data.pisos
+import com.example.androidappproyecto.data.data.modelos.Piso
 
 @Composable
 fun PantallaHome(){

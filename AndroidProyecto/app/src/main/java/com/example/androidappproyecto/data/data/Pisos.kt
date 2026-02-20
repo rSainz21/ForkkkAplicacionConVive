@@ -1,6 +1,6 @@
-package com.example.androidappproyecto.data
+package com.example.androidappproyecto.data.data
 
-import com.example.androidappproyecto.modelos.Piso
+import com.example.androidappproyecto.data.data.modelos.Piso
 
 val pisos = listOf(
     Piso(

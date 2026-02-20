@@ -1,4 +1,4 @@
-package com.example.androidappproyecto.modelos
+package com.example.androidappproyecto.data.data.modelos
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
