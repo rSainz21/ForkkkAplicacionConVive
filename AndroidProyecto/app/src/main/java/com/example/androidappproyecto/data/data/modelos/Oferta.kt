@@ -1,4 +1,4 @@
-package com.example.androidappproyecto.modelos
+package com.example.androidappproyecto.data.data.modelos
 
 data class Oferta(
     var id: Int,

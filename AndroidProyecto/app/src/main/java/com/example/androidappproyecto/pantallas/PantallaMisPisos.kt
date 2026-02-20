@@ -13,8 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.androidappproyecto.data.pisos
-import com.example.androidappproyecto.modelos.Piso
+import com.example.androidappproyecto.data.data.modelos.Piso
 
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
 

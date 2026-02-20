@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
-import com.example.androidappproyecto.modelos.Usuario
+import com.example.androidappproyecto.data.data.modelos.Usuario
 import com.example.androidappproyecto.pantallas.PantallaBuscar
 import com.example.androidappproyecto.pantallas.PantallaDetallePiso
 import com.example.androidappproyecto.pantallas.PantallaHome

@@ -1,4 +1,4 @@
-package com.example.androidappproyecto.modelos
+package com.example.androidappproyecto.data.data.modelos
 
 data class Tarea(
     val id: Int,
