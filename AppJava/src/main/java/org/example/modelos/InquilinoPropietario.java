@@ -25,15 +25,17 @@ public class InquilinoPropietario {
     @Column(nullable = false)
     private LocalDateTime fecha_msg;
 
+    private String mensaje;
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         InquilinoPropietario that = (InquilinoPropietario) o;
-        return Objects.equals(inquilino, that.inquilino) && Objects.equals(propietario, that.propietario) && Objects.equals(fecha_msg, that.fecha_msg);
+        return Objects.equals(inquilino, that.inquilino) && Objects.equals(propietario, that.propietario) && Objects.equals(fecha_msg, that.fecha_msg) && Objects.equals(mensaje, that.mensaje);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inquilino, propietario, fecha_msg);
+        return Objects.hash(inquilino, propietario, fecha_msg, mensaje);
     }
 }
