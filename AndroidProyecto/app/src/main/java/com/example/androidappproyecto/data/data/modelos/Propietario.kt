@@ -1,17 +1,23 @@
 package com.example.androidappproyecto.data.data.modelos
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+
+@Entity(tableName = "propietarios")
+@TypeConverters(Converters::class)
 data class Propietario(
-    val uid: String,
-    val name: String,
-    val email: String,
-    val role: String,
-    val phone: String,
-    val address: String,
+    @PrimaryKey(autoGenerate = true)
+    override val id: Int,
+    override val nombre_usuario: String,
+    override val nombre_real: String,
+    override val fecha_nacimiento: String?,
+    override val email: String,
+    override val password: String,
 
     val pisos: List<Piso>? = null,
-
     val inquilinos: List<InquilinoPropietario>? = null,
-
     val ofertas: List<Oferta>? = null,
     val contratos: List<Contrato>? = null
-)
+) : Usuario(id, nombre_usuario, nombre_real, fecha_nacimiento, email, password)

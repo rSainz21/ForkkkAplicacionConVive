@@ -20,12 +20,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.androidappproyecto.data.data.modelos.Inquilino
+import com.example.androidappproyecto.data.data.modelos.Propietario
 
 import com.example.androidappproyecto.data.data.modelos.Usuario
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaPerfil(user: Usuario){
+    val rolTexto = when (user) {
+        is Propietario -> "Propietario"
+        is Inquilino -> "Inquilino"
+        else -> "Usuario"
+    }
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -54,7 +61,7 @@ fun PantallaPerfil(user: Usuario){
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = user.name.take(1).uppercase(),
+                    text = user.nombre_real.take(1).uppercase(),
                     fontSize = 48.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold
@@ -64,14 +71,13 @@ fun PantallaPerfil(user: Usuario){
             Spacer(modifier = Modifier.height(24.dp))
 
 
-            Text(user.name, fontSize = 28.sp, fontWeight = FontWeight.Bold)
+            Text(user.nombre_usuario, fontSize = 28.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(8.dp))
+            Text(user.nombre_real, fontSize = 16.sp, color = Color.Gray)
             Text(user.email, fontSize = 16.sp, color = Color.Gray)
-            Text(user.phone, fontSize = 16.sp, color = Color.Gray)
-            Text(user.address, fontSize = 16.sp, color = Color.Gray)
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = if (user.role == "propietario") "Propietario" else "Inquilino",
+                text = rolTexto,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF800000)
@@ -79,22 +85,22 @@ fun PantallaPerfil(user: Usuario){
 
 
             Spacer(modifier = Modifier.height(22.dp))
-          Button(
-              onClick = { },
-              modifier = Modifier.fillMaxWidth(),
-              colors=ButtonDefaults.buttonColors(
-                  containerColor = Color(0xFF800000)
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth(),
+                colors=ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF800000)
               )
-          ) {
-              Text(
+            ) {
+                Text(
                   text = "Editar Perfil",
                   color = Color.White,
                   fontSize = 16.sp
               )
           }
-
-
         }
     }
 }
+
+
 

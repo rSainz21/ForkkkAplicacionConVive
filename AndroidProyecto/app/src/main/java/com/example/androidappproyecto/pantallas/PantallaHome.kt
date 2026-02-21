@@ -28,6 +28,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import com.example.androidappproyecto.R
+import com.example.androidappproyecto.data.data.modelos.Direccion
 import com.example.androidappproyecto.data.data.pisos
 import com.example.androidappproyecto.data.data.modelos.Piso
 
@@ -129,7 +130,11 @@ fun seleccionDelPiso(): Piso {
     val tituloValido = ""
     return pisos.find { it.titulo != tituloValido } ?: Piso(
         titulo = " ",
-        direccion = " ",
+        direccion = Direccion(
+            calle = " ",
+            ciudad = " ",
+            provincia = " "
+        ),
         descripcion = " ",
         propietario = null,
         precio = 0.00,
