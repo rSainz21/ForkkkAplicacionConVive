@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - develop
-      - feature/*
+      - "feature/*"
   pull_request:
     branches:
       - main
@@ -26,7 +26,8 @@ jobs:
           cache: 'maven'
 
       - name: Compilar y ejecutar tests
-        run: mvn clean verify
+        run: mvn -B clean verify
+        working-directory: ./AppJava      # <--- Ajuste clave
 
       - name: Confirmación de ejecución
-        run: echo "CI ejecutada correctamente en la rama ${{ github.ref }}"
+        run: echo "CI ejecutada correctamente para ${{ github.ref }}"
