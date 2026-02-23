@@ -1,11 +1,16 @@
-package com.example.androidappproyecto.data
+package com.example.androidappproyecto.data.data
 
-import com.example.androidappproyecto.modelos.Piso
+import com.example.androidappproyecto.data.data.modelos.Direccion
+import com.example.androidappproyecto.data.data.modelos.Piso
 
 val pisos = listOf(
     Piso(
         titulo = "Habitación exterior en el centro",
-        direccion = "Calle Valle de los Tojos, Torrelavega",
+        direccion = Direccion(
+            calle = "Calle Valle de los Tojos",
+            ciudad = "Torrelavega",
+            provincia = "Cantabria"
+        ),
         descripcion = "Habitación amplia y luminosa en piso compartido. Totalmente amueblada y con gastos incluidos.",
         propietario = null,
         precio = 350.00,
@@ -19,7 +24,11 @@ val pisos = listOf(
     ),
     Piso(
         titulo = "Piso reformado cerca de la universidad",
-        direccion = "Avenida de España, Santander",
+        direccion = Direccion(
+            calle = "Avenida de España",
+            ciudad = "Santander",
+            provincia = "Cantabria"
+        ),
         descripcion = "Piso recién reformado, ideal para estudiantes. Cocina equipada y zonas comunes amplias.",
         propietario = null,
         precio = 450.00,
@@ -33,7 +42,11 @@ val pisos = listOf(
     ),
     Piso(
         titulo = "Habitación en piso compartido",
-        direccion = "Calle Julián Ceballos, Torrelavega",
+        direccion = Direccion(
+            calle = "Calle Julián Ceballos",
+            ciudad = "Torrelavega",
+            provincia = "Cantabria"
+        ),
         descripcion = "Habitación cómoda en piso tranquilo. Buen ambiente y excelente ubicación.",
         propietario = null,
         precio = 300.00,
@@ -47,7 +60,11 @@ val pisos = listOf(
     ),
     Piso(
         titulo = "Piso moderno con balcón",
-        direccion = "Paseo Pereda, Santander",
+        direccion = Direccion(
+            calle = "Paseo Pereda",
+            ciudad = "Santander",
+            provincia = "Cantabria"
+        ),
         descripcion = "Piso moderno con balcón y vistas. Muy luminoso y bien comunicado.",
         propietario = null,
         precio = 600.00,
@@ -61,7 +78,11 @@ val pisos = listOf(
     ),
     Piso(
         titulo = "Estudio acogedor",
-        direccion = "Calle Alta, Santander",
+        direccion = Direccion(
+            calle = "Calle Alta",
+            ciudad = "Santander",
+            provincia = "Cantabria"
+        ),
         descripcion = "Estudio ideal para una persona. Totalmente amueblado y listo para entrar a vivir.",
         propietario = null,
         precio = 420.00,
@@ -75,7 +96,11 @@ val pisos = listOf(
     ),
     Piso(
         titulo = "Habitación amplia con escritorio",
-        direccion = "Barrio Covadonga, Torrelavega",
+        direccion = Direccion(
+            calle = "Barrio Covadonga",
+            ciudad = "Torrelavega",
+            provincia = "Cantabria"
+        ),
         descripcion = "Habitación grande con escritorio y armario empotrado. Piso tranquilo y bien cuidado.",
         propietario = null,
         precio = 320.00,
@@ -89,7 +114,11 @@ val pisos = listOf(
     ),
     Piso(
         titulo = "Piso céntrico para compartir",
-        direccion = "Calle Burgos, Santander",
+        direccion = Direccion(
+            calle = "Calle Burgos",
+            ciudad = "Santander",
+            provincia = "Cantabria"
+        ),
         descripcion = "Piso céntrico con varias habitaciones, ideal para compartir entre estudiantes o jóvenes trabajadores.",
         propietario = null,
         precio = 500.00,
@@ -103,7 +132,11 @@ val pisos = listOf(
     ),
     Piso(
         titulo = "Apartamento luminoso",
-        direccion = "Calle Consolación, Torrelavega",
+        direccion = Direccion(
+            calle = "Calle Consolación",
+            ciudad = "Torrelavega",
+            provincia = "Cantabria"
+        ),
         descripcion = "Apartamento luminoso y bien distribuido. Cerca de comercios y transporte público.",
         propietario = null,
         precio = 480.00,

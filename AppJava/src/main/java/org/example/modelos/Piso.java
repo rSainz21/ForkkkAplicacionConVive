@@ -22,37 +22,12 @@ public class Piso {
     private String url_imagen;
     @Column(nullable = false)
     private boolean disponible;
-    @OneToMany(mappedBy = "piso")
-    @JsonManagedReference
-    List<Inquilino> inquilinos;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     Propietario propietario;
-    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Oferta> ofertas;
-    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Gasto> gastos;
-    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Contrato> contratos;
+    private double precio;
+    private boolean validado;
 
-    @Override
-    public String toString() {
-        return "Piso{" +
-                "id=" + id +
-                ", direccion=" + direccion +
-                ", descripcion='" + descripcion + '\'' +
-                ", urlImagen='" + url_imagen + '\'' +
-                ", disponible=" + disponible +
-                ", inquilinos=" + inquilinos +
-                ", propietario=" + propietario +
-                ", ofertas=" + ofertas +
-                ", gastos=" + gastos +
-                ", contratos=" + contratos +
-                '}';
-    }
+
 
     public Piso() {
     }
@@ -97,14 +72,6 @@ public class Piso {
         this.url_imagen = urlImagen;
     }
 
-    public List<Inquilino> getInquilinos() {
-        return inquilinos;
-    }
-
-    public void setInquilinos(List<Inquilino> inquilinos) {
-        this.inquilinos = inquilinos;
-    }
-
     public Propietario getPropietario() {
         return propietario;
     }
@@ -113,27 +80,19 @@ public class Piso {
         this.propietario = propietario;
     }
 
-    public List<Oferta> getOfertas() {
-        return ofertas;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setOfertas(List<Oferta> ofertas) {
-        this.ofertas = ofertas;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public List<Gasto> getGastos() {
-        return gastos;
+    public boolean isValidado() {
+        return validado;
     }
 
-    public void setGastos(List<Gasto> gastos) {
-        this.gastos = gastos;
-    }
-
-    public List<Contrato> getContratos() {
-        return contratos;
-    }
-
-    public void setContratos(List<Contrato> contratos) {
-        this.contratos = contratos;
+    public void setValidado(boolean validado) {
+        this.validado = validado;
     }
 }

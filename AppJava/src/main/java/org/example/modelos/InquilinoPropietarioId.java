@@ -7,6 +7,7 @@ public class InquilinoPropietarioId {
     private int inquilino;
     private int propietario;
     private LocalDateTime fecha_msg;
+    private String mensaje;
 
     public InquilinoPropietarioId() {
     }
@@ -33,6 +34,14 @@ public class InquilinoPropietarioId {
 
     public void setFecha_msg(LocalDateTime fecha_msg) {
         this.fecha_msg = fecha_msg;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
     @Override
