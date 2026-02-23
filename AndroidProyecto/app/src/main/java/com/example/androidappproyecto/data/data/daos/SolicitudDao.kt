@@ -14,8 +14,14 @@ interface SolicitudDao {
     @Query("SELECT * FROM solicitudes")
     fun getAllSolicitudes(): Flow<List<Solicitud>>
 
+    @Query("SELECT * FROM solicitudes WHERE id_solicitud = :id")
+    suspend fun getSolicitudById(id: Int): Solicitud
+
     @Insert
     suspend fun insertSolicitud(solicitud: Solicitud)
+
+    @Insert
+    suspend fun insertSolicitudes(solicitudes: List<Solicitud>)
 
     @Update
     suspend fun updateSolicitud(solicitud: Solicitud)

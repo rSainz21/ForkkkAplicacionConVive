@@ -14,8 +14,14 @@ interface TareaDao {
     @Query("SELECT * FROM tareas")
     fun getAllTareas(): Flow<List<Tarea>>
 
+    @Query("SELECT * FROM tareas WHERE id_tarea = :id")
+    suspend fun getTareaById(id: Int): Tarea
+
     @Insert
     suspend fun insertTarea(tarea: Tarea)
+
+    @Insert
+    suspend fun insertTareas(tareas: List<Tarea>)
 
     @Update
     suspend fun updateTarea(tarea: Tarea)

@@ -14,6 +14,12 @@ interface PisoDao {
     @Query("SELECT * FROM pisos")
     fun getAllPisos(): Flow<List<Piso>>
 
+    @Query("SELECT * FROM pisos WHERE id_piso = :id")
+    suspend fun getPisoById(id: Int): Piso
+
+    @Insert
+    suspend fun insertPisos(pisos: List<Piso>)
+
     @Insert
     suspend fun insertPiso(piso: Piso)
 

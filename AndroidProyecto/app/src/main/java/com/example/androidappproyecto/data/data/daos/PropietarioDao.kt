@@ -14,8 +14,14 @@ interface PropietarioDao {
     @Query("SELECT * FROM propietarios")
     fun getAllPropietarios(): Flow<List<Propietario>>
 
+    @Query("SELECT * FROM propietarios WHERE id = :id")
+    suspend fun getPropietarioById(id: Int): Propietario
+
     @Insert
     suspend fun insertPropietario(propietario: Propietario)
+
+    @Insert
+    suspend fun insertPropietarios(propietarios: List<Propietario>)
 
     @Update
     suspend fun updatePropietario(propietario: Propietario)
