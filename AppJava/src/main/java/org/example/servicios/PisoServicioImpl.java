@@ -12,32 +12,14 @@ public class PisoServicioImpl implements  PisoServicio {
     @Autowired
     private PisoRepositorio pisoRepositorio;
     @Override
-    public List<PisoDTO> obtenerPisos() {
+    public List<Piso> obtenerPisos() {
 
-        return pisoRepositorio.findAll().stream().map(p ->
-                        new PisoDTO( p.getId(),
-                                p.getDireccion(),
-                                p.getDescripcion(),
-                                p.getUrl_imagen(),
-                                p.isDisponible(),
-                                p.getOfertas(),
-                                p.getGastos(),
-                                p.getContratos()))
-                .toList();
+        return pisoRepositorio.findAll();
     }
 
     @Override
-    public PisoDTO obtenerPisoPorId(Integer id) {
-        return pisoRepositorio.findById(id).map(p ->
-                        new PisoDTO(p.getId(),
-                                p.getDireccion(),
-                                p.getDescripcion(),
-                                p.getUrl_imagen(),
-                                p.isDisponible(),
-                                p.getOfertas(),
-                                p.getGastos(),
-                                p.getContratos()))
-                .orElse(null);
+    public Piso obtenerPisoPorId(Integer id) {
+        return pisoRepositorio.findById(id).orElse(null);
     }
 
     @Override
@@ -52,10 +34,6 @@ public class PisoServicioImpl implements  PisoServicio {
             existe.setDescripcion(piso.getDescripcion());
             existe.setDireccion(existe.getDireccion());
             existe.setDisponible(existe.isDisponible());
-            existe.setPropietario(existe.getPropietario());
-            existe.setInquilinos(existe.getInquilinos());
-            existe.setGastos(existe.getGastos());
-            existe.setOfertas(existe.getOfertas());
             return pisoRepositorio.save(existe);
         }
         return null;

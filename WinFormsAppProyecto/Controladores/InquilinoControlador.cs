@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Controladores
 {
-    internal class InquilinoControlador : IControlador<Inquilino>
+    public class InquilinoControlador : IControlador<Inquilino>
     {
         private HttpClient cliente;
 
@@ -74,5 +74,6 @@ namespace Controladores
             inquilino = JsonConvert.DeserializeObject<Inquilino>(mensajeJson);
             return inquilino;
         }
+
     }
 }

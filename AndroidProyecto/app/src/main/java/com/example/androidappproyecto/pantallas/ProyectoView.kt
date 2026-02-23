@@ -1,7 +1,6 @@
 package com.example.androidappproyecto.pantallas
 
 import android.annotation.SuppressLint
-import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -17,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.androidappproyecto.modelos.Items_barra_inferior
+import com.example.androidappproyecto.data.data.modelos.Items_barra_inferior
 import com.example.androidappproyecto.navegacion.AppConviveNavigation
 
 
@@ -64,10 +63,11 @@ fun currentRoute(navController: NavHostController):String?=
 private fun AppConviveBottomBar(navController: NavHostController) {
     val bar_items= listOf(
         Items_barra_inferior.Item_bottom_nav_home,
-        Items_barra_inferior.Item_bottom_nav_pisos,
         Items_barra_inferior.Item_bottom_nav_search,
-        Items_barra_inferior.Item_bottom_nav_myapp,
-        Items_barra_inferior.Item_bottom_nav_premium)
+        Items_barra_inferior.Item_bottom_nav_chat,
+        Items_barra_inferior.Item_bottom_nav_pisos,
+        Items_barra_inferior.Item_bottom_nav_perfil
+)
 
     NavigationBar(
         contentColor = Color(0xFF800000),

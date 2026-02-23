@@ -1,6 +1,8 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,13 +16,10 @@ public class Oferta {
     @Column(nullable = false)
     private double cantidad;
     private String descripcion;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Piso piso;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Inquilino inquilino;
-    @OneToMany(mappedBy = "oferta",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Solicitud> solicitudes;
 
 
     public Oferta() {
@@ -64,14 +63,6 @@ public class Oferta {
 
     public void setInquilino(Inquilino inquilino) {
         this.inquilino = inquilino;
-    }
-
-    public List<Solicitud> getSolicitudes() {
-        return solicitudes;
-    }
-
-    public void setSolicitudes(List<Solicitud> solicitudes) {
-        this.solicitudes = solicitudes;
     }
 
 }

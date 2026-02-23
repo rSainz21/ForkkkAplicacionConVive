@@ -14,31 +14,13 @@ public class ContratoServicioImpl implements ContratoServicio {
     private ContratoRepositorio contratoRepositorio;
 
     @Override
-    public List<ContratoDTO> obtenerContratos() {
-        return contratoRepositorio.findAll().stream().map(c ->
-                        new ContratoDTO( c.getId(),
-                                c.getDescripcion(),
-                                c.getPrecio(),
-                                c.getFecha_inicio(),
-                                c.getFecha_fin(),
-                                c.getInquilinos(),
-                                c.getPropietario().getId(),
-                                c.getPiso().getId()))
-                .toList();
+    public List<Contrato> obtenerContratos() {
+        return contratoRepositorio.findAll();
     }
 
     @Override
-    public ContratoDTO obtenerContratoPorId(Integer id) {
-        return contratoRepositorio.findById(id).map(c ->
-                        new ContratoDTO( c.getId(),
-                            c.getDescripcion(),
-                            c.getPrecio(),
-                            c.getFecha_inicio(),
-                            c.getFecha_fin(),
-                            c.getInquilinos(),
-                            c.getPropietario().getId(),
-                            c.getPiso().getId()))
-                .orElse(null);
+    public Contrato obtenerContratoPorId(Integer id) {
+        return contratoRepositorio.findById(id).orElse(null);
     }
 
     @Override
@@ -55,7 +37,6 @@ public class ContratoServicioImpl implements ContratoServicio {
             contrato.setPrecio(contratoActualizar.getPrecio());
             contrato.setFecha_inicio(contratoActualizar.getFecha_inicio());
             contrato.setFecha_fin(contratoActualizar.getFecha_fin());
-            contrato.setInquilinos(contratoActualizar.getInquilinos());
             contrato.setPropietario(contratoActualizar.getPropietario());
             contrato.setPiso(contratoActualizar.getPiso());
 

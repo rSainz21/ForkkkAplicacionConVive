@@ -1,6 +1,7 @@
 package org.example.modelos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -22,12 +23,9 @@ public class Contrato {
     @Column(nullable = false)
     private LocalDate fecha_fin;
 
-    @OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Inquilino> inquilinos;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Propietario propietario;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Piso piso;
 
     public Contrato() {
@@ -67,14 +65,6 @@ public class Contrato {
 
     public void setFecha_fin(LocalDate fechaFin) {
         this.fecha_fin = fechaFin;
-    }
-
-    public List<Inquilino> getInquilinos() {
-        return inquilinos;
-    }
-
-    public void setInquilinos(List<Inquilino> inquilinos) {
-        this.inquilinos = inquilinos;
     }
 
     public Propietario getPropietario() {

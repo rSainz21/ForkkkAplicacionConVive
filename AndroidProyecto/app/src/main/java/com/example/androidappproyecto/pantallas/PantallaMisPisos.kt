@@ -13,10 +13,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.androidappproyecto.data.pisos
-import com.example.androidappproyecto.modelos.Piso
+import com.example.androidappproyecto.data.data.modelos.Direccion
+import com.example.androidappproyecto.data.data.modelos.Piso
 
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
+import com.example.androidappproyecto.navegacion.Rutas
 
 @Composable
 fun PantallaMisPisos(navController: NavHostController) {
@@ -24,23 +25,42 @@ fun PantallaMisPisos(navController: NavHostController) {
     val pisosPrueba = listOf(
         Piso(
             titulo = "Piso Centro",
-            direccion = "C/ Mayor 12, Torrelavega",
+            direccion = Direccion(
+                calle = "Calle Consolación",
+                ciudad = "Torrelavega",
+                provincia = "Cantabria"
+            ),
             descripcion = "Luminoso, 3 habitaciones, cerca de todo.",
-            propietario = "Juan Pérez",
+            url_imagen = "https://picsum.photos/600/400?random=1",
+            disponible = true,
+            propietario = null,
             precio = 350.00,
-            urlImagen = "https://picsum.photos/600/400?random=1",
+            inquilinos = null,
+            ofertas = null,
+            gastos = null,
+            contratos = null,
+            id = 1
         ),
         Piso(
             titulo = "Piso Playa",
-            direccion = "Av. del Mar 5, Suances",
+            direccion = Direccion(
+                calle = "Calle Burgos",
+                ciudad = "Santander",
+                provincia = "Cantabria"
+            ),
             descripcion = "Vistas al mar, ideal para teletrabajo.",
-            propietario = "Laura Gómez",
+            propietario = null,
             precio = 420.00,
-            urlImagen = "https://picsum.photos/600/400?random=2",
+            url_imagen = "https://picsum.photos/600/400?random=2",
+            inquilinos = null,
+            ofertas = null,
+            gastos = null,
+            contratos = null,
+            id = 2
         )
     )
 
-    if (pisos.isEmpty()) {
+    if (pisosPrueba.isEmpty()) {
         EstadoSinPisos()
     } else {
         LazyColumn(
@@ -48,7 +68,7 @@ fun PantallaMisPisos(navController: NavHostController) {
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(pisos) { piso ->
+            items(pisosPrueba) { piso ->
                 TarjetaPiso(piso) {
                     PisoSeleccionado.piso = piso
                     navController.navigate(Rutas.DetallePiso.name)
@@ -81,17 +101,20 @@ private fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
             .clickable { onClick() },
         elevation = CardDefaults.cardElevation(2.dp)
     ) {
-        Column {
-            GlideImage(
-                model = piso.urlImagen,
-                contentDescription = "Foto del piso",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = piso.titulo,
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleMedium
             )
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(piso.titulo, fontWeight = FontWeight.Bold)
-                Text(piso.direccion)
+
+            // Arreglo para el objeto Direccion
+            piso.direccion?.let { dir ->
+                Text(
+                    text = "${dir.calle}, ${dir.ciudad}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }

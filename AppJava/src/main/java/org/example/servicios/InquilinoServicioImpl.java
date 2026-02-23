@@ -14,41 +14,13 @@ public class InquilinoServicioImpl implements InquilinoServicio {
     private InquilinoRepositorio inquilinoRepositorio;
 
     @Override
-    public List<InquilinoDTO> obtenerInquilinos() {
-        return inquilinoRepositorio.findAll().stream().map(i ->
-                        new InquilinoDTO(i.getId(),
-                                i.getNombre_usuario(),
-                                i.getNombre_real(),
-                                i.getFecha_nacimiento(),
-                                i.getEmail(),
-                                i.getFechaAlta(),
-                                i.getPiso().getId(),
-                                i.getTareas(),
-                                i.getOfertas(),
-                                i.getSolicitudes(),
-                                i.getGastos(),
-                                i.getPropietarios(),
-                                i.getContrato().getId()))
-                .toList();
+    public List<Inquilino> obtenerInquilinos() {
+        return inquilinoRepositorio.findAll();
     }
 
     @Override
-    public InquilinoDTO obtenerInquilinoPorId(Integer id) {
-        return inquilinoRepositorio.findById(id).map(i ->
-                        new InquilinoDTO(i.getId(),
-                                i.getNombre_usuario(),
-                                i.getNombre_real(),
-                                i.getFecha_nacimiento(),
-                                i.getEmail(),
-                                i.getFechaAlta(),
-                                i.getPiso().getId(),
-                                i.getTareas(),
-                                i.getOfertas(),
-                                i.getSolicitudes(),
-                                i.getGastos(),
-                                i.getPropietarios(),
-                                i.getContrato().getId()))
-                .orElse(null);
+    public Inquilino obtenerInquilinoPorId(Integer id) {
+        return inquilinoRepositorio.findById(id).orElse(null);
     }
 
 
@@ -62,13 +34,8 @@ public class InquilinoServicioImpl implements InquilinoServicio {
         Inquilino inquilino = inquilinoRepositorio.findById(id).orElse(null);
         if (inquilino != null) {
             inquilino.setContrato(inquilinoEditar.getContrato());
-            inquilino.setOfertas(inquilinoEditar.getOfertas());
             inquilino.setPiso(inquilinoEditar.getPiso());
-            inquilino.setPropietarios(inquilinoEditar.getPropietarios());
-            inquilino.setGastos(inquilinoEditar.getGastos());
             inquilino.setFechaAlta(inquilinoEditar.getFechaAlta());
-            inquilino.setSolicitudes(inquilinoEditar.getSolicitudes());
-            inquilino.setTareas(inquilinoEditar.getTareas());
             inquilino.setEmail(inquilinoEditar.getEmail());
             inquilino.setNombre_real(inquilinoEditar.getNombre_real());
             inquilino.setNombre_usuario(inquilinoEditar.getNombre_usuario());

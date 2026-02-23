@@ -1,7 +1,9 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -20,36 +22,11 @@ public class Piso {
     private String url_imagen;
     @Column(nullable = false)
     private boolean disponible;
-    @OneToMany(mappedBy = "piso")
-    @JsonIgnore
-    List<Inquilino> inquilinos;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference("propietario-pisos")
     Propietario propietario;
-    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Oferta> ofertas;
-    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Gasto> gastos;
-    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Contrato> contratos;
 
-    @Override
-    public String toString() {
-        return "Piso{" +
-                "id=" + id +
-                ", direccion=" + direccion +
-                ", descripcion='" + descripcion + '\'' +
-                ", urlImagen='" + url_imagen + '\'' +
-                ", disponible=" + disponible +
-                ", inquilinos=" + inquilinos +
-                ", propietario=" + propietario +
-                ", ofertas=" + ofertas +
-                ", gastos=" + gastos +
-                ", contratos=" + contratos +
-                '}';
-    }
+
 
     public Piso() {
     }
@@ -92,45 +69,5 @@ public class Piso {
 
     public void setUrl_imagen(String urlImagen) {
         this.url_imagen = urlImagen;
-    }
-
-    public List<Inquilino> getInquilinos() {
-        return inquilinos;
-    }
-
-    public void setInquilinos(List<Inquilino> inquilinos) {
-        this.inquilinos = inquilinos;
-    }
-
-    public Propietario getPropietario() {
-        return propietario;
-    }
-
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
-    }
-
-    public List<Oferta> getOfertas() {
-        return ofertas;
-    }
-
-    public void setOfertas(List<Oferta> ofertas) {
-        this.ofertas = ofertas;
-    }
-
-    public List<Gasto> getGastos() {
-        return gastos;
-    }
-
-    public void setGastos(List<Gasto> gastos) {
-        this.gastos = gastos;
-    }
-
-    public List<Contrato> getContratos() {
-        return contratos;
-    }
-
-    public void setContratos(List<Contrato> contratos) {
-        this.contratos = contratos;
     }
 }
