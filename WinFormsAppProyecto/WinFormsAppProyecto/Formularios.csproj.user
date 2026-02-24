@@ -28,5 +28,8 @@
     <Compile Update="FormVerMiPiso.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ValidarPisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
