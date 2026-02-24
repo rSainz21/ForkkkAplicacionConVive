@@ -20,8 +20,8 @@ public class InquilinoPropietario {
     @JoinColumn(name="propietario_id", nullable = false)
     private Propietario propietario;
     @Id
-    @Column(nullable = false)
-    private LocalDateTime fecha_msg;
+    @Column(nullable = false, name = "fecha_msg")
+    private LocalDateTime fechaMsg;
 
     @Column(nullable = false)
     private String mensaje;
@@ -43,12 +43,12 @@ public class InquilinoPropietario {
         this.propietario = propietario;
     }
 
-    public LocalDateTime getFecha_msg() {
-        return fecha_msg;
+    public LocalDateTime getFechaMsg() {
+        return fechaMsg;
     }
 
-    public void setFecha_msg(LocalDateTime fecha_msg) {
-        this.fecha_msg = fecha_msg;
+    public void setFechaMsg(LocalDateTime fechaMsg) {
+        this.fechaMsg = fechaMsg;
     }
 
     public String getMensaje() {
@@ -63,11 +63,11 @@ public class InquilinoPropietario {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         InquilinoPropietario that = (InquilinoPropietario) o;
-        return Objects.equals(inquilino, that.inquilino) && Objects.equals(propietario, that.propietario) && Objects.equals(fecha_msg, that.fecha_msg) && Objects.equals(mensaje, that.mensaje);
+        return Objects.equals(inquilino, that.inquilino) && Objects.equals(propietario, that.propietario) && Objects.equals(fechaMsg, that.fechaMsg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inquilino, propietario, fecha_msg, mensaje);
+        return Objects.hash(inquilino, propietario, fechaMsg);
     }
 }

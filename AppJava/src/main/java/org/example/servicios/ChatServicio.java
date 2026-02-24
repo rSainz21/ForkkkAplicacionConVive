@@ -20,7 +20,7 @@ public class ChatServicio {
         InquilinoPropietario msg = new InquilinoPropietario();
         msg.setInquilino(inq);
         msg.setPropietario(prop);
-        msg.setFecha_msg(LocalDateTime.now());
+        msg.setFechaMsg(LocalDateTime.now());
         msg.setMensaje(mensaje);
 
         return chatRepositorio.save(msg);
