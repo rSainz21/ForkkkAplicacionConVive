@@ -57,7 +57,7 @@ project.nuget.cache
 
 # Auto-generados
 *.AssemblyInfo.cs
-*.Designer.cs
+!*.Designer.cs
 *.editorconfig
 *.g.cs
 *.GeneratedMSBuildEditorConfig.editorconfig
