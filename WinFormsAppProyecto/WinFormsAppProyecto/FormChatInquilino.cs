@@ -67,13 +67,15 @@ namespace Formularios
 
             foreach (var msg in mensajes)
             {
-                bool enviadoPorInquilino = msg.inquilino.id == inquilinoId;
-                AgregarBurbuja(msg.mensaje, enviadoPorInquilino);
+                // Si lo envió el inquilino → es “mío” → derecha
+                bool esMio = msg.enviadoPorInquilino;
+                AgregarBurbuja(msg.mensaje, esMio);
             }
 
             if (panelMnesajes.Controls.Count > 0)
                 panelMnesajes.ScrollControlIntoView(panelMnesajes.Controls[panelMnesajes.Controls.Count - 1]);
         }
+
 
         private void AgregarBurbuja(string texto, bool enviadoPorInquilino)
         {
