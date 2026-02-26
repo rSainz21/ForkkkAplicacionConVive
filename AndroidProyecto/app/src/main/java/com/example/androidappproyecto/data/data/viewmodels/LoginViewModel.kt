@@ -26,7 +26,6 @@ class LoginViewModel(
             estado = LoginState.Error("Por favor, rellena todos los campos")
             return
         }
-
         viewModelScope.launch {
             estado = LoginState.Loading
             try {
