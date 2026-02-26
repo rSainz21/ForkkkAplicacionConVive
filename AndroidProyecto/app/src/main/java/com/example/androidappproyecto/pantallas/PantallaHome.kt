@@ -2,7 +2,9 @@ package com.example.androidappproyecto.pantallas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +18,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
@@ -31,20 +35,42 @@ import com.example.androidappproyecto.R
 import com.example.androidappproyecto.data.data.modelos.Direccion
 import com.example.androidappproyecto.data.data.pisos
 import com.example.androidappproyecto.data.data.modelos.Piso
+import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
 
 @Composable
-fun PantallaHome(){
-    LazyColumn (
+fun PantallaHome(
+    pisoViewModel: PisoViewModel
+){
+    val listaDePisos by pisoViewModel.listaDePisos.collectAsStateWithLifecycle()
+
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.LightGray)
-            .padding(8.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.Start,
-
-    ){
-        items(pisos){ piso ->
-            PisoSeccion(piso)
+    ) {
+        if (listaDePisos.isEmpty()) {
+            // Estado vacío o de carga
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Cargando pisos o base de datos vacía...",
+                    modifier = Modifier.padding(top = 80.dp)
+                )
+            }
+        } else {
+            // Lista de pisos
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(listaDePisos) { piso ->
+                    PisoSeccion(
+                        piso
+                    )
+                }
+            }
         }
     }
 }

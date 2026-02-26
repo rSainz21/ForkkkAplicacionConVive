@@ -2,14 +2,21 @@ package com.example.androidappproyecto.data.data.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.androidappproyecto.data.data.daos.PisoDao
+import com.example.androidappproyecto.data.data.modelos.Direccion
 import com.example.androidappproyecto.data.data.modelos.Piso
+import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class PisoViewModel(private val repositorio: PisoRepositorio) : ViewModel() {
+class PisoViewModel(private val repositorio: PisoRepositorio
+, private val pisoDao: PisoDao) : ViewModel() {
 
     // Estado para la lista de pisos (se actualiza automáticamente desde Room)
     val todosLosPisos = repositorio.obtenerTodosLosPisos()
@@ -20,6 +27,14 @@ class PisoViewModel(private val repositorio: PisoRepositorio) : ViewModel() {
 
     private val _mensajeError = MutableStateFlow<String?>(null)
     val mensajeError: StateFlow<String?> = _mensajeError.asStateFlow()
+
+    val listaDePisos: StateFlow<List<Piso>> = pisoDao.getAllPisos()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
+
 
     fun refrescarPisos() {
         viewModelScope.launch {

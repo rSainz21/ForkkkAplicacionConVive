@@ -1,7 +1,9 @@
 package com.example.androidappproyecto.data.data.api
 
+import com.example.androidappproyecto.data.data.DTO.PropietarioDTO
 import retrofit2.http.Query
 import com.example.androidappproyecto.data.data.modelos.Propietario
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -18,7 +20,7 @@ interface PropietarioApi {
     suspend fun getPropietarioById(@Path("id") id: Int): Propietario
 
     @POST("api/propietarios")
-    suspend fun createPropietario(@Body propietario: Propietario): Propietario
+    suspend fun createPropietario(@Body propietario: PropietarioDTO): Response<Propietario>
 
     @PUT("api/propietarios/{id}")
     suspend fun updatePropietario(@Path("id") id: Int, @Body propietario: Propietario): Propietario
