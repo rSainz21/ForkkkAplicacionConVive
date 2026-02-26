@@ -33,6 +33,7 @@
             añadirPiso = new ToolStripMenuItem();
             modificarPiso = new ToolStripMenuItem();
             verPisosToolStripMenuItem = new ToolStripMenuItem();
+            verMiPisoToolStripMenuItem = new ToolStripMenuItem();
             gestionGastos = new ToolStripMenuItem();
             verGastodToolStripMenuItem = new ToolStripMenuItem();
             chatToolStripMenuItem = new ToolStripMenuItem();
@@ -66,7 +67,7 @@
             // 
             // gestiónPisosToolStripMenuItem
             // 
-            gestiónPisosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { añadirPiso, modificarPiso, verPisosToolStripMenuItem });
+            gestiónPisosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { añadirPiso, modificarPiso, verPisosToolStripMenuItem, verMiPisoToolStripMenuItem });
             gestiónPisosToolStripMenuItem.Name = "gestiónPisosToolStripMenuItem";
             gestiónPisosToolStripMenuItem.Size = new Size(125, 27);
             gestiónPisosToolStripMenuItem.Text = "Gestión pisos";
@@ -91,6 +92,13 @@
             verPisosToolStripMenuItem.Size = new Size(224, 28);
             verPisosToolStripMenuItem.Text = "Ver pisos";
             verPisosToolStripMenuItem.Click += verPisosToolStripMenuItem_Click;
+            // 
+            // verMiPisoToolStripMenuItem
+            // 
+            verMiPisoToolStripMenuItem.Name = "verMiPisoToolStripMenuItem";
+            verMiPisoToolStripMenuItem.Size = new Size(224, 28);
+            verMiPisoToolStripMenuItem.Text = "Ver mi piso";
+            verMiPisoToolStripMenuItem.Click += verMiPisoToolStripMenuItem_Click;
             // 
             // gestionGastos
             // 
@@ -221,6 +229,7 @@
         private ToolStripMenuItem añadirPiso;
         private ToolStripMenuItem modificarPiso;
         private ToolStripMenuItem verPisosToolStripMenuItem;
+        private ToolStripMenuItem verMiPisoToolStripMenuItem;
         private ToolStripMenuItem gestionGastos;
         private ToolStripMenuItem verGastodToolStripMenuItem;
         private ToolStripMenuItem chatToolStripMenuItem;

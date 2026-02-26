@@ -19,13 +19,14 @@ namespace WinFormsAppProyecto
             CatalogoPisos catalogoPisos = new CatalogoPisos();
             AbrirFormulario(catalogoPisos);
 
-            añadirPiso.Visible = false;
+            aï¿½adirPiso.Visible = false;
             modificarPiso.Visible = false;
-            añadirPiso.Visible = false;
+            aï¿½adirPiso.Visible = false;
             gestionarOfertas.Visible = false;
             gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             button1.Visible = false;
+            verMiPisoToolStripMenuItem.Visible = true;
         }
 
         public Form1(Propietario propietario)
@@ -39,6 +40,7 @@ namespace WinFormsAppProyecto
             hacerOferta.Visible = false;
             hacerSolicitud.Visible = false;
             button1.Visible = false;
+            verMiPisoToolStripMenuItem.Visible = false;
         }
 
         public Form1(Administrador administrador)
@@ -51,20 +53,21 @@ namespace WinFormsAppProyecto
             gestionGastos.Visible = false;
             hacerOferta.Visible = false;
             hacerSolicitud.Visible = false;
-            añadirPiso.Visible = false;
+            aï¿½adirPiso.Visible = false;
             modificarPiso.Visible = false;
-            añadirPiso.Visible = false;
+            aï¿½adirPiso.Visible = false;
             gestionarOfertas.Visible = false;
             gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             chatToolStripMenuItem.Visible = false;
-            gestiónPisosToolStripMenuItem.Visible = false;
-            gestiónOfertasToolStripMenuItem.Visible = false;
-            gestiónSolicitudesToolStripMenuItem.Visible = false;
+            gestiï¿½nPisosToolStripMenuItem.Visible = false;
+            gestiï¿½nOfertasToolStripMenuItem.Visible = false;
+            gestiï¿½nSolicitudesToolStripMenuItem.Visible = false;
+            verMiPisoToolStripMenuItem.Visible = false;
         }
         private void AbrirFormulario(Form formulario)
         {
-            // Cerrar cualquier formulario MDI hijo que esté abierto
+            // Cerrar cualquier formulario MDI hijo que estï¿½ abierto
             foreach (Form frm in this.MdiChildren)
                 frm.Close();
 
@@ -72,17 +75,17 @@ namespace WinFormsAppProyecto
             formulario.MdiParent = this;
 
             formulario.StartPosition = FormStartPosition.Manual;
-            formulario.Location = new Point(0, 0); // o la posición que quieras
+            formulario.Location = new Point(0, 0); // o la posiciï¿½n que quieras
 
             formulario.Show();
         }
 
 
 
-        private void añadirPiso_click(object sender, EventArgs e)
+        private void aï¿½adirPiso_click(object sender, EventArgs e)
         {
-            FormAñadirPiso formAñadirPiso = new FormAñadirPiso(propietario);
-            AbrirFormulario(formAñadirPiso);
+            FormAï¿½adirPiso formAï¿½adirPiso = new FormAï¿½adirPiso(propietario);
+            AbrirFormulario(formAï¿½adirPiso);
         }
 
         private void modificarPiso_Click(object sender, EventArgs e)
@@ -91,7 +94,7 @@ namespace WinFormsAppProyecto
 
             if (catalogo == null)
             {
-                MessageBox.Show("Primero abre el catálogo de pisos."); return;
+                MessageBox.Show("Primero abre el catï¿½logo de pisos."); return;
             }
             else
             {
@@ -115,13 +118,26 @@ namespace WinFormsAppProyecto
             AbrirFormulario(catalogoPisos);
         }
 
+
+        private void verMiPisoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (inquilino == null)
+            {
+                MessageBox.Show("Esta opciÃ³n estÃ¡ disponible solo para inquilinos.");
+                return;
+            }
+
+            FormVerMiPiso formVerMiPiso = new FormVerMiPiso(inquilino, null);
+            AbrirFormulario(formVerMiPiso);
+        }
+
         private void verGastodToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
 
             if (catalogo == null)
             {
-                MessageBox.Show("Primero abre el catálogo de pisos."); return;
+                MessageBox.Show("Primero abre el catï¿½logo de pisos."); return;
             }
             else
             {
@@ -146,12 +162,12 @@ namespace WinFormsAppProyecto
 
         private async void hablarPorChatToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // 1. Buscar si el catálogo está abierto
+            // 1. Buscar si el catï¿½logo estï¿½ abierto
             CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
 
             if (catalogo == null)
             {
-                MessageBox.Show("Primero abre el catálogo de pisos."); return;
+                MessageBox.Show("Primero abre el catï¿½logo de pisos."); return;
             }
             else
             {
@@ -184,7 +200,7 @@ namespace WinFormsAppProyecto
 
                         // 5. Si eres PROPIETARIO ? NO puedes obtener el inquilino desde el piso
                         //    porque ya no existe piso.contrato
-                        //    Así que abrimos la lista de inquilinos
+                        //    Asï¿½ que abrimos la lista de inquilinos
                         if (propietario != null)
                         {
                             CatalogoInquilinos catalogoInquilinos = new CatalogoInquilinos(propietario);
@@ -195,7 +211,7 @@ namespace WinFormsAppProyecto
             }
         }
 
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cerrarSesiï¿½nToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
             FormLogs formLogs = new FormLogs();
